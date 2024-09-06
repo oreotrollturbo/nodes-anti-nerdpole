@@ -4,5 +4,5 @@ nerdpole-max-height: 10 # in blocks
 # How many blocks a player is bellow the max height untill a warning is issue via a hotbar message
 nerdpole-warning-height: 3 # this is calculated by doing :  max-height - warning height
 
-# How long the player wont be able to move and will have negative potion effects
+# How long the player won't be able to move and will have negative potion effects
 nerdpole-debuff-duration: 6 # in seconds

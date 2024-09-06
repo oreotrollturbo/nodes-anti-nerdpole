@@ -3,6 +3,7 @@ package org.oreo.antinerdpole.listeners
 import net.md_5.bungee.api.ChatMessageType
 import net.md_5.bungee.api.chat.TextComponent
 import org.bukkit.ChatColor
+import org.bukkit.GameMode
 import org.bukkit.Sound
 import org.bukkit.block.Block
 import org.bukkit.entity.Player
@@ -18,7 +19,7 @@ import phonon.nodes.Nodes
 import java.util.*
 
 
-class NerdPoleListener(private val plugin: AntiNerdpole) : Listener {
+class NerdPoleListener(private val plugin: AntiNerdpole, private val nodes: Nodes = Nodes) : Listener {
 
     val nerdpoleWarningHeight = plugin.config.getInt("nerdpole-warning-height")
     val maxNerdpoleHeight = plugin.config.getInt("nerdpole-max-height")
@@ -30,19 +31,16 @@ class NerdPoleListener(private val plugin: AntiNerdpole) : Listener {
         val player = e.player
         val playerNation = Nodes.getResident(player)?.nation
 
-        if (isPillaring(block,player) /*|| player.gameMode == GameMode.CREATIVE*/){
+        if (isPillaring(block,player) || player.gameMode == GameMode.CREATIVE){
             return
         }
 
 
-        val territory = GetNodesInfo.getTerritorry(block)
-        player.sendMessage(territory.toString())
+        val territory = nodes.getTerritoryFromChunk(block.chunk)
 
         if  (!GetNodesInfo.isWarOn()){
             if (territory != null) {
-                player.sendMessage("in territory")
                 if (territory.town?.nation == playerNation){
-                    player.sendMessage("your nation")
                     return
                 } else {
                     if (playerNation != null) {
