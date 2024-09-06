@@ -10,8 +10,6 @@ import phonon.nodes.Nodes
 class AntiNerdpole : JavaPlugin() {
 
     override fun onEnable() {
-
-        this.logger.info(Nodes.getTownCount().toString())
         server.pluginManager.registerEvents(NerdPoleListener(this), this)
         server.pluginManager.registerEvents(GlompedPlayersListener(), this)
         saveDefaultConfig()
