@@ -9,6 +9,7 @@ import phonon.nodes.Nodes
 
 class AntiNerdpole : JavaPlugin() {
 
+
     override fun onEnable() {
         server.pluginManager.registerEvents(NerdPoleListener(this), this)
         server.pluginManager.registerEvents(GlompedPlayersListener(), this)
