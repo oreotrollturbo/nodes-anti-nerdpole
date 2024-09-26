@@ -43,6 +43,12 @@
                     <goals>
                         <goal>compile</goal>
                     </goals>
+                    <configuration>
+                        <sourceDirs>
+                            <source>src/main/java</source>
+                            <source>target/generated-sources/annotations</source>
+                        </sourceDirs>
+                    </configuration>
                 </execution>
                 <execution>
                     <id>test-compile</id>
@@ -128,6 +134,17 @@
           <scope>system</scope>
           <version>1.0</version>
           <systemPath>${basedir}\src\libs\nodes-1.16-SNAPSHOT-0.0.10.jar</systemPath>
+      </dependency>
+      <dependency>
+          <groupId>org.jetbrains.kotlin</groupId>
+          <artifactId>kotlin-stdlib-jdk8</artifactId>
+          <version>${kotlin.version}</version>
+      </dependency>
+      <dependency>
+          <groupId>org.jetbrains.kotlin</groupId>
+          <artifactId>kotlin-test</artifactId>
+          <version>${kotlin.version}</version>
+          <scope>test</scope>
       </dependency>
   </dependencies>
 </project>
